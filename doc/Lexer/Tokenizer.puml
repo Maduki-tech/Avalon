@@ -1,0 +1,28 @@
+@startuml
+enum TokenType {
+    TOKEN_IDENTIFIER,
+
+    TOKEN_LITERAL_STRING,
+    TOKEN_LITERAL_NUMBER,
+
+    TOKEN_OPERATOR_PLUS,
+    TOKEN_OPERATOR_EQUAL,
+
+    TOKEN_DELIMITER_LPAREN,
+    TOKEN_DELIMITER_RPAREN,
+    TOKEN_DELIMITER_SEMICOLON,
+
+    TOKEN_KEYWORD_PRINT,
+    TOKEN_KEYWORD_VAR,
+}
+
+
+class Tokenizer{
+    +Tokenizer()
+    + String parse(String)
+    -nextToken()
+
+    List<TokenType> tokens
+
+}
+@enduml
