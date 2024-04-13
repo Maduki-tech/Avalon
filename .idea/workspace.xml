@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="664b482e-d6e1-489b-8f75-7161a75a4295" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/davidschlueter/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/davidschlueter/lexer/Tokens.java" afterDir="false" />
-    </list>
+    <list default="true" id="664b482e-d6e1-489b-8f75-7161a75a4295" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +64,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712985622575</updated>
       <workItem from="1712985623631" duration="112000" />
-      <workItem from="1712985793341" duration="1615000" />
+      <workItem from="1712985793341" duration="2656000" />
     </task>
     <servers />
   </component>
