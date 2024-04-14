@@ -1,26 +1,38 @@
 package de.davidschlueter.lexer;
 
+import java.util.Arrays;
+import java.util.regex.Pattern;
+
 /**
  * The TokenType enum represents the different types of tokens that can be found in the source code.
  */
 public enum TokenType {
-    // identifiers
-    TOKEN_IDENTIFIER,
+    TOKEN_LITERAL_STRING("\".*\""),
+    TOKEN_LITERAL_NUMBER("[0-9]+"),
+    TOKEN_OPERATOR_PLUS("\\+"),
+    TOKEN_OPERATOR_EQUAL("="),
+    TOKEN_DELIMITER_LPAREN("\\("),
+    TOKEN_DELIMITER_RPAREN("\\)"),
+    TOKEN_DELIMITER_SEMICOLON(";"),
+    TOKEN_KEYWORD_PRINT("print"),
+    TOKEN_KEYWORD_VAR("var"),
+    TOKEN_IDENTIFIER("[a-zA-Z_][a-zA-Z0-9_]*");
 
-    // types
-    TOKEN_LITERAL_STRING,
-    TOKEN_LITERAL_NUMBER,
+    private final Pattern pattern;
 
-    // operators
-    TOKEN_OPERATOR_PLUS,
-    TOKEN_OPERATOR_EQUAL,
+    TokenType(String regex) {
+        this.pattern = Pattern.compile(regex);
+    }
 
-    // Symbols
-    TOKEN_DELIMITER_LPAREN,
-    TOKEN_DELIMITER_RPAREN,
-    TOKEN_DELIMITER_SEMICOLON,
+    public boolean matches(String token) {
+        return pattern.matcher(token).matches();
+    }
 
-    // Keywords
-    TOKEN_KEYWORD_PRINT,
-    TOKEN_KEYWORD_VAR,
+    public static TokenType forToken(String token) {
+        return Arrays.stream(TokenType.values())
+                .filter(type -> type.matches(token))
+                .findFirst()
+                .orElse(TOKEN_IDENTIFIER);
+
+    }
 }

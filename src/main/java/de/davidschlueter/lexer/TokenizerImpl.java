@@ -18,10 +18,10 @@ public class TokenizerImpl implements Tokenizer {
     @Override
     public List<TokenType> parse(String code) {
         List<TokenType> tokenTypes = new ArrayList<TokenType>();
-        List<String> strings = bufferedReader(code);
+        List<String> strings = tokenize(code);
 
         strings.forEach(s -> {
-            TokenType tokenType = getTokenType(s);
+            TokenType tokenType = TokenType.forToken(s);
             log.info("Token: {} Type: {}", s, tokenType);
             tokenTypes.add(tokenType);
         });
@@ -30,7 +30,12 @@ public class TokenizerImpl implements Tokenizer {
         return tokenTypes;
     }
 
-    private List<String> bufferedReader(String code) {
+    /**
+     * Read the code string and split it into tokens
+     * @param code the code string
+     * @return the list of tokens
+     */
+    private List<String> tokenize(String code) {
         List<String> tokens = new ArrayList<String>();
         int index = 0;
         for (int i = 0; i < code.length(); i++) {
@@ -63,6 +68,15 @@ public class TokenizerImpl implements Tokenizer {
         return c == '"';
     }
 
+    /**
+     * Get the index of the token in the code string and add the token to the tokens list
+     * and reset the index
+     * @param code the code string
+     * @param index the index of the token
+     * @param tokens the list of tokens
+     * @param i the current index in the code string
+     * @return the index of the token
+     */
     private int getIndex(String code, int index, List<String> tokens, int i) {
         if (index != 0) {
             tokens.add(code.substring(i - index, i));
@@ -72,15 +86,30 @@ public class TokenizerImpl implements Tokenizer {
     }
 
 
+    /**
+     * Check if the character is a space
+     * @param c the character to check
+     * @return true if the character is a space
+     */
     private boolean isSpace(char c) {
         return c == ' ' || c == '\n' || c == '\t';
     }
 
+    /**
+     * Check if the character is a delimiter
+     * @param c the character to check for being a delimiter
+     * @return true if the character is a delimiter
+     */
     private boolean isDelimiter(char c) {
         return c == '(' || c == ')' || c == ';' || c == '+' || c == '=';
     }
 
 
+    /**
+     * Get the token type for a given token string representation
+     * @param token the token string representation
+     * @return the token type
+     */
     private TokenType getTokenType(String token) {
         TokenType tokenType = null;
 
@@ -117,6 +146,4 @@ public class TokenizerImpl implements Tokenizer {
         }
         return tokenType;
     }
-
-
 }
