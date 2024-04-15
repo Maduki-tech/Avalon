@@ -1,11 +1,15 @@
 package de.davidschlueter.ast;
 
-public class Node {
-    int value;
-    Node left;
-    Node right;
+import de.davidschlueter.model.TokenNode;
+import lombok.Data;
 
-    Node(int tokenType){
+@Data
+public class Node {
+    private TokenNode value;
+    private Node left;
+    private Node right;
+
+    Node(TokenNode tokenType){
         this.value = tokenType;
     }
 }

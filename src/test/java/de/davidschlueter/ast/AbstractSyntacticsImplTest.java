@@ -1,5 +1,6 @@
 package de.davidschlueter.ast;
 
+import de.davidschlueter.model.TokenNode;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,27 +13,27 @@ class AbstractSyntacticsImplTest {
     @BeforeEach
     void setup() {
         sut = new AbstractSyntacticsImpl();
-        sut.add(6);
-        sut.add(4);
-        sut.add(8);
-        sut.add(3);
-        sut.add(5);
-        sut.add(7);
-        sut.add(9);
+        sut.add(new TokenNode(6, null, null));
+        sut.add(new TokenNode(4, null, null));
+        sut.add(new TokenNode(8, null, null));
+        sut.add(new TokenNode(3, null, null));
+        sut.add(new TokenNode(5, null, null));
+        sut.add(new TokenNode(7, null, null));
+        sut.add(new TokenNode(9, null, null));
     }
 
     @Test
     void testAddToRoot() {
 
-        assertEquals(6, sut.root.value);
+        assertEquals(6, sut.root.getValue().getWeight());
     }
 
     @Test
     void testTreeGivenElementsAndSearchIfContains() {
-        assertTrue(sut.containsNode(6));
-        assertTrue(sut.containsNode(4));
+        assertTrue(sut.containsNode(new TokenNode(6, null, null)));
+        assertTrue(sut.containsNode(new TokenNode(4, null, null)));
 
-        assertFalse(sut.containsNode(1));
+        assertFalse(sut.containsNode(new TokenNode(1, null, null)));
     }
 
 }
